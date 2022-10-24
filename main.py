@@ -65,8 +65,25 @@ def trapRiemann(problem, interval, num):
     print(f'real: {real}')
     print(f'percent error: {abs((real-guess)/real)*100}%')
 
+def thirdRiemann(problem, interval, num):
+    dist = (interval[1]-interval[0])/num
+    xpl = np.linspace(interval[0],interval[1],300)
+    ypl = [problem.subs(x,j) for j in xpl]
+    xs = np.linspace(interval[0],interval[1],num)
+    xs = xs[:(len(xs)-1)]
+    ys = []
+    for i in range(1,len(xs)):
+        ys.append((xs[i]-xs[i-1])/6*(problem.subs(x,xs[i-1])+4*problem.subs(x,(xs[i]+xs[i-1])/2)+problem.subs(x,xs[i-1])))
+    real = sym.integrate(problem,(x,interval[0],interval[1]))
+    guess = sum(ys)
+    print('Simpsons 1/3 Reiemann Sum')
+    print(f'guess: {guess}')
+    print(f'real: {real}')
+    print(f'percent error: {abs((real-guess)/real)*100}%')
+
 findRiemann(probs[1],[-5,5],1000)
 trapRiemann(probs[1],[-5,5],1000)
+thirdRiemann(probs[1],[-5,5],1000)
 
 # for p in probs:
 #     plotRiemann(p,[-5,5],50,.5)
