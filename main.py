@@ -52,8 +52,12 @@ def trapRiemann(problem, interval, num):
     xs = np.linspace(interval[0],interval[1],num)
     xs = xs[:(len(xs)-1)]
     ys = []
-    for i in range(1,len(xs)):
-        ys.append(dist*(problem.subs(x,xs[i-1])+(problem.subs(x,xs[i])-problem.subs(x,xs[i-1]))/2))
+    #for i in range(1,len(xs)):
+    #    ys.append(dist*(problem.subs(x,xs[i-1])+(problem.subs(x,xs[i])-problem.subs(x,xs[i-1]))/2))
+    ys.append(dist/2*problem.subs(x,xs[0]))
+    for i in range(1,len(xs)-1):
+        ys.append(dist*problem.subs(x,xs[i]))
+    ys.append(dist/2*problem.subs(x,xs[-1]))
     real = sym.integrate(problem,(x,interval[0],interval[1]))
     guess = sum(ys)
     print('Trapezoidal Reiemann Sum')
