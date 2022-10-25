@@ -4,15 +4,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 #fortnite
 x, y = sym.symbols('x y')
-probs = [2*sym.sec(x)**2*sym.tan(x),
+probs = [2*(sym.sec(x)**2)*sym.tan(x),
             4*x**5-5*x**4,
             sym.exp(x)*sym.sin(x),
-            (x**4+3*x)**(-1),
-            3*x**2*(x**3+1)**7,
-            sym.cos(x)**4,
-            -2*x**2,x/(1+x**2),
-            (x**2-1)/x,
-            (3*x**2)*(x**(1/2))]
+            ]
 
 def findRiemann(problem, interval, num):
     real = sym.integrate(problem,(x,interval[0],interval[1]))
