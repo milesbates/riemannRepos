@@ -2,7 +2,11 @@ import sympy as sym
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-#fortnite
+#2.1) v(t) = gm/c * ( 1 - exp(-c/m * t)), t = [0, t], v(0) = 13000 m
+#2.2) v(t) = gm/c
+#we need to implement these two fuctions with a human, a sphere, and a squirrel
+#g is gravity(i think), m is mass, c is drag coefficient, t is time, v is velocity
+#also github copilot wrote the line above so thats pretty cool
 x, y = sym.symbols('x y')
 probs = [2*(sym.sec(x)**2)*sym.tan(x),
             4*x**5-5*x**4,
