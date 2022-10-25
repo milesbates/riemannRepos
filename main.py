@@ -6,7 +6,7 @@ import matplotlib.patches as patches
 x, y = sym.symbols('x y')
 probs = [2*(sym.sec(x)**2)*sym.tan(x),
             4*x**5-5*x**4,
-            sym.exp(x)*sym.sin(x),
+            sym.exp(x)*sym.sin(x)
             ]
 
 def findRiemann(problem, interval, num):
