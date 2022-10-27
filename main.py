@@ -8,7 +8,8 @@ probs = [2*(sym.sec(x)**2)*sym.tan(x),
             4*x**5-5*x**4,
             sym.exp(x)*sym.sin(x)
             ]
-
+g, m, c = sym.symbols('g m c')
+probs2 = [g*m/c*(1-sym.exp(-c/m*x)), g*m/c]
 def findRiemann(problem, interval, num):
     real = sym.integrate(problem,(x,interval[0],interval[1]))
     dist = (interval[1]-interval[0])/num
@@ -17,8 +18,8 @@ def findRiemann(problem, interval, num):
     guess = sum(ys)
     print('Riemann Sum')
     print(f'guess: {guess}')
-    print(f'real: {sym.N(real)}')
-    print(f'percent error: {sym.N(abs((real-guess)/real)*100)}%')
+    print(f'real: {real}')
+    print(f'percent error: {abs((real-guess)/real)*100}%')
 
 def plotRiemann(problem,interval,num,type=0):
     dist = (interval[1]-interval[0])/num
