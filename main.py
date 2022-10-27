@@ -17,8 +17,8 @@ def findRiemann(problem, interval, num):
     guess = sum(ys)
     print('Riemann Sum')
     print(f'guess: {guess}')
-    print(f'real: {real}')
-    print(f'percent error: {abs((real-guess)/real)*100}%')
+    print(f'real: {sym.N(real)}')
+    print(f'percent error: {sym.N(abs((real-guess)/real)*100)}%')
 
 def plotRiemann(problem,interval,num,type=0):
     dist = (interval[1]-interval[0])/num
@@ -93,10 +93,10 @@ def eighthRiemann(problem, interval, num):
     print(f'real: {real}')
     print(f'percent error: {abs((real-guess)/real)*100}%')
 
-findRiemann(probs[1],[-5,5],1000)
-trapRiemann(probs[1],[-5,5],1000)
-thirdRiemann(probs[1],[-5,5],1000)
-eighthRiemann(probs[1], [-5,5],1000)
+findRiemann(probs[2],[-5,5],1000)
+#trapRiemann(probs[1],[-5,5],1000)
+#thirdRiemann(probs[1],[-5,5],1000)
+#eighthRiemann(probs[1], [-5,5],1000)
 
 # for p in probs:
 #     plotRiemann(p,[-5,5],50,.5)
