@@ -11,16 +11,15 @@ probs = [2*(sym.sec(x)**2)*sym.tan(x),
 g, m, c = sym.symbols('g m c')
 probs2 = [g*m/c*(1-sym.exp(-c/m*x)), g*m/c]
 def findRiemann(problem, interval, num):
-    real = sym.integrate(problem,(x,interval[0],interval[1]))
+    real = sym.N(sym.integrate(problem,(x,interval[0],interval[1])))
     dist = (interval[1]-interval[0])/num
     xs = np.linspace(interval[0],interval[1],num)
     ys = [(problem.subs(x,j))*dist for j in xs]
-    guess = sum(ys)
+    guess = sym.N(sum(ys))
     print('Riemann Sum')
     print(f'guess: {guess}')
     print(f'real: {real}')
-    print(f'percent error: {abs((real-guess)/real)*100}%')
-
+    print(f'percent error: {abs((real-guess)/real)*100}')
 def plotRiemann(problem,interval,num,type=0):
     dist = (interval[1]-interval[0])/num
     xpl = np.linspace(interval[0],interval[1],300)
@@ -95,6 +94,7 @@ def eighthRiemann(problem, interval, num):
     print(f'percent error: {abs((real-guess)/real)*100}%')
 
 findRiemann(probs[2],[-5,5],1000)
+findRiemann(probs2[0],[0,5],1000)
 #trapRiemann(probs[1],[-5,5],1000)
 #thirdRiemann(probs[1],[-5,5],1000)
 #eighthRiemann(probs[1], [-5,5],1000)
