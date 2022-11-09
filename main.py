@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 #fortnite
 x, y = sym.symbols('x y')
-probs = [2*(sym.sec(x)**2)*sym.tan(x),
+probs = [(2*((sym.sec(x))**2))*sym.tan(x),
             4*x**5-5*x**4,
-            sym.exp(x)*sym.sin(x)
+            sym.exp(x)*sym.sin(x),
+            sym.exp((-x**2)/2)
             ]
 g, m, c = sym.symbols('g m c')
-probs2 = [g*m/c*(1-sym.exp(-c/m*x)), g*m/c]
+#probs2 = [g*m/c*(1-sym.exp(-c/m*x)), g*m/c]
 def findRiemann(problem, interval, num):
     real = sym.N(sym.integrate(problem,(x,interval[0],interval[1])))
     dist = (interval[1]-interval[0])/num
@@ -93,11 +94,11 @@ def eighthRiemann(problem, interval, num):
     print(f'real: {real}')
     print(f'percent error: {abs((real-guess)/real)*100}%')
 
-findRiemann(probs[2],[-5,5],1000)
-findRiemann(probs2[0],[0,5],1000)
-#trapRiemann(probs[1],[-5,5],1000)
-#thirdRiemann(probs[1],[-5,5],1000)
-#eighthRiemann(probs[1], [-5,5],1000)
+findRiemann(probs[1],[-5,5],500)
+findRiemann(probs[3],[0,(3.1415926)/4],500)
+trapRiemann(probs[1],[-5,5],500)
+thirdRiemann(probs[1],[-5,5],500)
+eighthRiemann(probs[1], [-5,5],500)
 
 # for p in probs:
 #     plotRiemann(p,[-5,5],50,.5)
