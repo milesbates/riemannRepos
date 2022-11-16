@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 #fortnite
-#test line
+#test line gaming
 x, y = sym.symbols('x y')
 probs = [(2*((sym.sec(x))**2))*sym.tan(x),
             4*x**5-5*x**4,
